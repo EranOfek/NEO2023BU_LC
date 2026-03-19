@@ -1,0 +1,11 @@
+This directory contains mat files with the MatchedSources objects containing the asteroid 2023BU forced photometry.
+
+
+% executed using:
+
+[Out1, orbEle] = get_horizons_orbele(2459970, 2459973, '2023 BU', 'StepSize',1,'StepUnit','m','Geod', [35.0407331,30.0529838,0.4200000]);
+
+AC=AstroCatalog({[Out1.JD Out1.J_RA.*180./pi Out1.J_Dec.*180./pi, Out1.Delta, Out1.r, Out1.AngSTO]},'ColNames',{'JD','RA','Dec','Delta','r','STO'});
+
+MS = pipeline.last.forcedPhotAll('EphemTable', AC, 'FileTemp', 'LAST*_sci_proc_Image_*.fits', 'BasePath', pwd);
+
