@@ -15,8 +15,14 @@ end
 
 Ephem = io.files.load2('Ephem.mat');
 
+% AllLC columns:
+ColAllLC = {'JD', 'FLUX_PSF', 'MAGERR_PS', 'Chi2dof', 'FLAGS', 'FLAG_POS', 'MAG_PSF', 'ErrZP'};
+
+save -v7.3 AllLC.mat AllLC ColAllLC
 
 %%
+load AllLC.mat
+
 RAD = 180./pi;
 AU = 149597870.700;  % km
 C  = 299792.458;
